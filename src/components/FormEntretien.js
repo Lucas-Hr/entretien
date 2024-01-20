@@ -27,6 +27,18 @@ const FormEntretien = () => {
         width : '100%',
     }
 
+    const styleButton = {
+        marginTop : '10px',
+        width : '100%',
+        padding : '5px 0px',
+        borderRadius : '5px',
+        border : 'none',
+        cursor : 'pointer',
+        backgroundColor : 'grey',
+        color : 'white'
+    
+    }
+
    
     const listRegion = [
         {id:1,nom:'Tana'},
@@ -47,7 +59,7 @@ const FormEntretien = () => {
     const [inputs, setInputs] = useState({
         nom : '',
         prenom : '',
-        region : '',
+        region : 'Tana',
         commune : '',
         date : '',
     });
@@ -69,6 +81,10 @@ const FormEntretien = () => {
 
     return (
         <div style={container}>
+            <h3 style={{textAlign : 'center', fontWeight : 'lighter',padding : '10px 0px'}}>Formulaire</h3>
+            <div style={{display : 'flex', justifyContent : 'center'}}>
+                <hr style={{width : '50%'}}/>
+            </div>
             <form onSubmit={validate}> 
                 <input type="text" placeholder='Nom' name="nom"  value={inputs.nom} onChange={handleChange} style={styleInput}/>
                 <input type="text" placeholder='Prenom' name="prenom" value={inputs.prenom} onChange={handleChange} style={styleInput}/>
@@ -83,7 +99,7 @@ const FormEntretien = () => {
                     {
                         listCommune.map((communes) => {
                             if (inputs.region == communes.region){
-                                return communes.commune.map((c,index) => (
+                                return communes.commune.map((c,index) => (//maka anle anaran commune anatinle tableau commune []
                                     <option key={index}>{c}</option>
                                 ))
                             }
@@ -92,7 +108,7 @@ const FormEntretien = () => {
                     }
                 </select>
                 <input type="date" name="date" style={styleInput} onChange={handleChange}/>
-                <input type="submit" value="Envoyer"/>
+                <input type="submit" value="Envoyer" style={styleButton}/>
             </form> 
             <div>
                 
